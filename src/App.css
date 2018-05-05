@@ -3,7 +3,7 @@
     height: 100vh;
     margin: 0;
     padding: 0;
-
+  display: flex;
 }
 
 .App {
@@ -50,6 +50,9 @@ button{
   outline: none;
   box-shadow: 1px 0px 4px 1px #0d580d96;
 }
+button:hover{
+  cursor: pointer;
+}
 #playno{
   background-color: red;
 }
@@ -84,8 +87,25 @@ div{
   width: 80%;
   display: flex;
   align-self: top;
+  margin-top: 5%;
 }
 #name-input{
   margin-left: 10px;
   margin-right: 5px;
+}
+#instruction{
+  background-color: #cedbef6b;
+  display: block;
+  padding: 10px;
+}
+#instruction summary {
+  outline: none;
+  color: #0E4BFE;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#instruction a:active{
+  color: #858a98;
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import Instruction from './Instruction';
 
-function PlayYN (){
+function PlayYN ({inst}){
     return(
         <div className='contener'>
             <div className='contener'>
@@ -13,6 +14,12 @@ function PlayYN (){
             <button id="playyes">yes</button>
             <button id="playno">no</button>
             </div>
+            <details  className='contener' id="instruction">
+                <summary>How to play</summary>
+                <div className='contener'>
+                    <p>{inst}</p>
+                </div>
+            </details>
         </div>
     );
 }
