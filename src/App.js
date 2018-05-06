@@ -13,9 +13,9 @@ class App extends Component {
   
   render() {
     return (
-      <dialog open className='col'>
+      <div  className='col'>
         <PlayYN />      
-      </dialog>
+      </div>
     );
   }
   

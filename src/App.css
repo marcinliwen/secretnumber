@@ -85,7 +85,7 @@ div{
   text-align: center;
 }
 .col{
-  width: 80%;
+  width: 100%;
   display: flex;
   align-self: top;
   margin-top: 5%;
@@ -107,6 +107,7 @@ div{
   outline: none;
   font-size: 16px;
   font-weight: 300;
+  margin-bottom: 5%;
 }
 #instruction li{
   padding: 5px;
@@ -122,7 +123,7 @@ div{
 }
 
 .instruction{
-  width: 100%;
+  width: 90%;
   text-align: left;
   background-color: #cedbef6b;
 }

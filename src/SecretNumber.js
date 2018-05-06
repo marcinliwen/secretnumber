@@ -3,6 +3,16 @@ import React, {Component} from 'react';
 
 
 class SecretNumber extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            secretnumber: [],
+            counter: 0,
+            digits: 0,
+            places: 0,
+            value: ''
+        }
+    };
     generateSecretNum (){
         var number = [];
         let i = 0;
@@ -11,30 +21,31 @@ class SecretNumber extends Component{
             while(number.includes(newDigit)){
                 newDigit = Math.floor(Math.random()*10);
             };
-            number.push(newDigit);
+        number.push(newDigit);
         };
         return number;
     };
     handleChange(event){
         this.setState({value: event.target.value});
     };
+    checkNumber=(n)=>{
+        let q = this.state.secretnumber;
 
+        n = n.split("");
+        alert(n[1]);
+        alert(q);
+        this.setState({digits: this.state.digits + 1});
+    };
     submitHandler(event){
-        alert('Your number ' + this.state.value);
-        this.setState({counter: this.state.counter + 1})
+        let num = this.state.value;
+        
+        this.checkNumber(num);
+        this.setState({counter: this.state.counter + 1});
+        this.setState({value: ''});
         event.preventDefault();
-    }
+    };
     
-    constructor(props) {
-        super(props);
-        this.state = {
-            secretnumber: [],
-            counter: 0,
-            digits: 0,
-            places: 0,
-            value: null
-        }
-    }
+    
     componentDidMount(){
         this.setState({
             secretnumber: this.generateSecretNum()
