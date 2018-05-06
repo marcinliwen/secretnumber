@@ -64,7 +64,8 @@ button:active{
 }
 
 
-output{padding: 25px;
+output{
+  padding: 25px;
   margin: 5px;
   background-color: lawngreen;
   border: none;
@@ -89,23 +90,57 @@ div{
   align-self: top;
   margin-top: 5%;
 }
+.title h2{
+  font-size: 20px;
+}
 #name-input{
-  margin-left: 10px;
-  margin-right: 5px;
+  margin: 10px;
+  outline: none;
+  border-radius: 4px;
+  color: #0E4BFE;
+}
+#name-input:focus{
+  background-color: aliceblue;
 }
 #instruction{
-  background-color: #cedbef6b;
-  display: block;
-  padding: 10px;
-}
-#instruction summary {
+  display: flex;
   outline: none;
-  color: #0E4BFE;
-  text-decoration: none;
+  font-size: 16px;
+  font-weight: 300;
+}
+#instruction li{
+  padding: 5px;
+  list-style: square;
+  list-style-position:outside;
+}
+#instruction ol{
+  padding-right: 10px;
+}
+.inst-button{
+  width: 90%;
   font-size: 22px;
-  font-weight: 600;
 }
 
-#instruction a:active{
-  color: #858a98;
+.instruction{
+  width: 100%;
+  text-align: left;
+  background-color: #cedbef6b;
+}
+.correct{
+  justify-content: start;
+  padding-left: 8%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.correct p{
+  display: block;
+  margin: 0;
+  width: 115px;
+  text-align: left;
+}
+#number{
+  margin: 5px;
+}
+#form{
+  width: 90%;
 }

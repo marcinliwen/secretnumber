@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Nameform from './Nameform';
+
 
 
 class Nameask extends Component {
@@ -7,7 +7,13 @@ class Nameask extends Component {
         return(
             <div className='contener'>
                 <h1>Welcome in 3digits game</h1>
-                <Nameform />
+                <form className='contener'>
+                    <label>
+                        what is your name?
+                        <input id="name-input" type="text" />
+                    </label>
+                    <input type="submit"/>
+                </form>
             </div>
         )
     }

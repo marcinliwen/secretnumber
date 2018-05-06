@@ -1,26 +1,42 @@
 import React, {Component} from 'react';
 import Instruction from './Instruction';
+import SecretNumber from './SecretNumber';
 
-function PlayYN ({inst}){
-    return(
-        <div className='contener'>
+class PlayYN extends Component {
+    constructor(){
+        super();
+        this.state = {
+            message : 0,
+            dblClick : 0,
+            instVisible: false,
+            playGroundVisible: false
+        }
+    }
+    showInstruction(){
+        this.setState(state =>({instVisible: !state.instVisible}))
+    }
+    playGame(){
+        this.setState({instVisible: false})
+        this.setState({playGroundVisible: true})
+    }
+    render(){
+        const {inst} = this.props;
+        return(
             <div className='contener'>
-                <h1>Welcome in 3digits game</h1>
-            </div>
-            <div className='contener'>
-                <h2>Will you play?</h2>
-            </div>
-            <div>
-            <button id="playyes">yes</button>
-            <button id="playno">no</button>
-            </div>
-            <details  className='contener' id="instruction">
-                <summary>How to play</summary>
-                <div className='contener'>
-                    <p>{inst}</p>
+                <div className='contener title'>
+                    <h2>Guess The Secret Number</h2>
                 </div>
-            </details>
-        </div>
-    );
+                <div className='contener'>
+                    <button className="inst-button" onClick={this.playGame.bind(this)} >PLAY</button>
+                </div>
+                    {this.state.playGroundVisible && <SecretNumber />}
+                <div  className='contener'id="instruction">
+                    <button className="inst-button" onClick={this.showInstruction.bind(this)}>RULES</button>
+                    {this.state.instVisible && <Instruction />}
+                </div>
+            </div>
+        );
+    }
+    
 }
 export default PlayYN;
