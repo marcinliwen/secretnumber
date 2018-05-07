@@ -136,7 +136,7 @@ div{
 .correct p{
   display: block;
   margin: 0;
-  width: 115px;
+  width: 145px;
   text-align: left;
 }
 #number{
@@ -144,4 +144,11 @@ div{
 }
 #form{
   width: 90%;
+}
+.used-num{
+  width: 50%;
+}
+.you-win{
+  font-size: 20px;
+  color: #0a7b1a;
 }

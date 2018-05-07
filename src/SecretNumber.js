@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Corrects from './Corrects';
+import Youwin from './Youwin';
 
 
 
@@ -10,7 +12,10 @@ class SecretNumber extends Component{
             counter: 0,
             digits: 0,
             places: 0,
-            value: ''
+            value: '',
+            usedNum: [],
+            youWin: false
+            
         }
     };
     generateSecretNum (){
@@ -23,27 +28,54 @@ class SecretNumber extends Component{
             };
         number.push(newDigit);
         };
+        alert(number);
         return number;
+    
     };
     handleChange(event){
         this.setState({value: event.target.value});
     };
     checkNumber=(n)=>{
+        this.setState({digits: 0});
+        this.setState({places: 0});
         let q = this.state.secretnumber;
-
         n = n.split("");
-        alert(n[1]);
-        alert(q);
-        this.setState({digits: this.state.digits + 1});
+        let i = 0;
+        let d = 0;
+        let p = 0;
+        if(n.toString() == q.toString()){
+            this.setState({youWin: true})
+        }else{
+            for (i; i < 3; i++){
+                if(q.includes(parseInt(n[i]))){
+                    d +=1;
+                };
+                if( parseInt(n[i]) == q[i]){
+                    p += 1;
+                }
+                
+            };
+        };
+        this.setState({digits: d});
+        this.setState({places: p});
+       
     };
+    
     submitHandler(event){
         let num = this.state.value;
-        
         this.checkNumber(num);
         this.setState({counter: this.state.counter + 1});
         this.setState({value: ''});
+        this.setState({usedNum: this.state.usedNum +" "+ num})
         event.preventDefault();
     };
+    
+    reset(){
+        this.setState({
+            digits: 0,
+            places: 0
+        })
+    }
     
     
     componentDidMount(){
@@ -54,16 +86,18 @@ class SecretNumber extends Component{
     render(){
         return(
             <div className='contener'>
-                <div className='contener correct'><p>correct digits:</p><p>{this.state.digits}</p></div>
-                <div className='contener correct'><p>correct places:</p><p>{this.state.places}</p></div>
+                {this.state.youWin && <Youwin num={this.state.usedNum}/>}
+                <Corrects counter = {this.state.digits} title='digits' />
+                <Corrects counter = {this.state.places} title='positions' />
                 <div className='contener correct'><p>counter:</p><p>{this.state.counter}</p></div>
                 <form id='form' onSubmit={this.submitHandler.bind(this)}>
                     <label>
                         gues the number:
-                        <input id="number" type="text" size='3' maxLength='3' minLength='3' pattern='\d*' required value={this.state.value} onChange={this.handleChange.bind(this)}/>
-                        <input type="submit"  />
+                        <input id="number" ref={input => input && input.focus()} type="text" size='3' maxLength='3' minLength='3' pattern='\d*' required value={this.state.value} onChange={this.handleChange.bind(this)}/>
+                        <input type="submit" onClick={this.reset.bind(this)}/>
                     </label>
                 </form>
+                <div className='contener used-num'>{this.state.usedNum}</div>
             </div>
         );
     }
