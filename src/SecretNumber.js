@@ -28,7 +28,6 @@ class SecretNumber extends Component{
             };
         number.push(newDigit);
         };
-        alert(number);
         return number;
     
     };
