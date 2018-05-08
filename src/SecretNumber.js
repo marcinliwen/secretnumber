@@ -97,7 +97,7 @@ class SecretNumber extends Component{
                 <form id='form' onSubmit={this.submitHandler.bind(this)}>
                     <label>
                         gues the number:
-                        <input id="number" ref={input => input && input.focus()} type="text" size='3' maxLength='3' minLength='3' pattern='\d*' required autocomplete="off" value={this.state.value} onChange={this.handleChange.bind(this)}/>
+                        <input id="number" ref={input => input && input.focus()} type="tel" size='3' maxLength='3' minLength='3'  pattern='\d*' required autocomplete="off" value={this.state.value} onChange={this.handleChange.bind(this)}/>
                         <input type="submit" onClick={this.reset.bind(this)}/>
                     </label>
                 </form>
