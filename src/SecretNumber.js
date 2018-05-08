@@ -14,7 +14,9 @@ class SecretNumber extends Component{
             places: 0,
             value: '',
             usedNum: [],
-            youWin: false
+            youWin: false,
+            winerNum: 0
+
             
         }
     };
@@ -61,12 +63,15 @@ class SecretNumber extends Component{
     };
     
     submitHandler(event){
+        
         let num = this.state.value;
         this.checkNumber(num);
         this.setState({counter: this.state.counter + 1});
         this.setState({value: ''});
-        this.setState({usedNum: this.state.usedNum +" "+ num})
+        this.setState({usedNum: this.state.usedNum +" "+ num});
+        this.setState({winerNum: num})
         event.preventDefault();
+        
     };
     
     reset(){
@@ -85,14 +90,14 @@ class SecretNumber extends Component{
     render(){
         return(
             <div className='contener'>
-                {this.state.youWin && <Youwin num={this.state.usedNum}/>}
+                {this.state.youWin && <Youwin num={this.state.winerNum} count={this.state.counter}/>}
                 <Corrects counter = {this.state.digits} title='digits' />
                 <Corrects counter = {this.state.places} title='positions' />
                 <div className='contener correct'><p>counter:</p><p>{this.state.counter}</p></div>
                 <form id='form' onSubmit={this.submitHandler.bind(this)}>
                     <label>
                         gues the number:
-                        <input id="number" ref={input => input && input.focus()} type="text" size='3' maxLength='3' minLength='3' pattern='\d*' required value={this.state.value} onChange={this.handleChange.bind(this)}/>
+                        <input id="number" ref={input => input && input.focus()} type="text" size='3' maxLength='3' minLength='3' pattern='\d*' required autocomplete="off" value={this.state.value} onChange={this.handleChange.bind(this)}/>
                         <input type="submit" onClick={this.reset.bind(this)}/>
                     </label>
                 </form>

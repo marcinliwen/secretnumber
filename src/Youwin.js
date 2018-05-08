@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 
 
 
-function Youwin({num}){
+function Youwin({num, count}){
     return(
         <div className='contener you-win'>
-            <h2>You Win!!!</h2>
+            <div className='contener'>
+                <h2>You win in {count} moves!!!</h2>  
+            </div>
             <div className='contener'>
                 secret number is: {num}
             </div>
+            
         </div>
     )
 }
