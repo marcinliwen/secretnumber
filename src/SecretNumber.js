@@ -94,14 +94,15 @@ class SecretNumber extends Component{
                 <Corrects counter = {this.state.digits} title='digits' />
                 <Corrects counter = {this.state.places} title='positions' />
                 <div className='contener correct'><p>counter:</p><p>{this.state.counter}</p></div>
+                <div className='contener used-num'>{this.state.usedNum}</div>
                 <form id='form' onSubmit={this.submitHandler.bind(this)}>
                     <label>
                         gues the number:
                         <input id="number" ref={input => input && input.focus()} type="text"inputmode='numeric' size='3' maxLength='3' minLength='3'  pattern='\d*' required autocomplete="off" value={this.state.value} onChange={this.handleChange.bind(this)}/>
-                        <input type="submit" onClick={this.reset.bind(this)}/>
+                        <input className="sub-button" type="submit" onClick={this.reset.bind(this)}/>
                     </label>
                 </form>
-                <div className='contener used-num'>{this.state.usedNum}</div>
+                
             </div>
         );
     }
